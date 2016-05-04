@@ -1,25 +1,35 @@
 package hello;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
-@Configuration
-@ComponentScan
+@SpringBootApplication
 public class Application {
 
-    @Bean
-    MessageService mockMessageService() {
-        return new MessageService() {
-            public String getMessage() {
-                return "Hello World!";
-            }
-        };
+    public static void main(String args[]) {
+        SpringApplication.run(Application.class, args);
     }
 
-    public static void main(String[] args) {
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext(Application.class);
-        MessagePrinter printer = context.getBean(MessagePrinter.class);
-        printer.printMessage();
-    }
 }
+
+/*@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
+
+    public static void main(String args[]) {
+        SpringApplication.run(Application.class);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        RestTemplate restTemplate = new RestTemplate();
+        Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+        log.info(quote.toString());
+    }
+}*/
