@@ -18,14 +18,15 @@ public class JdbcTicketDAO implements TicketDAO {
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public Long insert(Ticket ticket){
 
         String sql = "INSERT INTO TICKET " +
                 "(TICKET_ID, NAME, NUMBER, EMAIL) VALUES (?, ?, ?, ?)";
-        String sql_query = "SELECT * FROM TICKET WHERE NAME = ? AND NUMBER = ? AND EMAIL = ?";
+        String sql_query = "SELECT * FROM TICKET WHERE TICKET_ID = (SELECT MAX(TICKET_ID) FROM TICKET WHERE " +
+                "NAME = ? AND NUMBER = ? AND EMAIL = ?)";
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
@@ -42,9 +43,19 @@ public class JdbcTicketDAO implements TicketDAO {
         return record;
     }
 
-    public Ticket findByTicketId(int ticketId){
+    public Ticket findByTicketId(Long ticketId){
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
         String sql = "SELECT * FROM TICKET WHERE TICKET_ID= ?";
         Ticket ticket = jdbcTemplate.queryForObject(sql, new Object[]{ticketId}, new TicketMapper());
         return ticket;
+    }
+
+    public void delete(Long ticketId){
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
+        String sql = "DELETE FROM TICKET WHERE TICKET_ID= ?";
+        jdbcTemplate.update(sql, new Object[]{ticketId});
+        return;
     }
 }

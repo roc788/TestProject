@@ -20,6 +20,12 @@ public class TicketController {
         return "ticket";
     }
 
+    @RequestMapping(value = "/admin/ticket/delete", method = RequestMethod.GET)
+    public String deletionForm(Model model) {
+        model.addAttribute("ticket", new Ticket());
+        return "delete-ticket";
+    }
+
     @RequestMapping(value="/ticket", method=RequestMethod.POST)
     public String ticketSubmit(@ModelAttribute Ticket ticket, Model model) {
 
@@ -30,5 +36,19 @@ public class TicketController {
 
         model.addAttribute("ticket", ticket);
         return "result";
+    }
+
+    @RequestMapping(value = "/admin/ticket/delete", method = RequestMethod.POST)
+    public String deleteTicket(@ModelAttribute Ticket ticket, Model model) {
+        ticketDAO.delete(ticket.getTicketId());
+        model.addAttribute("ticket", ticket);
+        return "delete-confirmation";
+    }
+
+    @RequestMapping(value = "/admin/ticket/{id}", method = RequestMethod.GET)
+    public String findTicket(Model model, @PathVariable Long id) {
+        Ticket ticket = ticketDAO.findByTicketId(id);
+        model.addAttribute("ticket", ticket);
+        return "ticket-information";
     }
 }

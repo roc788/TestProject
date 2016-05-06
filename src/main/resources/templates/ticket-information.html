@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Submitted</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Ticket Information</h1>
+<p>Ticket information for ticket number <span th:text="${ticket.ticketId}" />:</p>
+<p th:text="'Name: ' + ${ticket.name}" />
+<p th:text="'Number: ' + ${ticket.number}" />
+<p th:text="'Email: ' + ${ticket.email}" />
+</body>
+</html>
