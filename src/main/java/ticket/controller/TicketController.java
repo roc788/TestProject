@@ -1,13 +1,12 @@
 package ticket.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ticket.dao.TicketDAO;
 import ticket.model.Ticket;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
 public class TicketController {
@@ -24,7 +23,10 @@ public class TicketController {
     @RequestMapping(value="/ticket", method=RequestMethod.POST)
     public String ticketSubmit(@ModelAttribute Ticket ticket, Model model) {
 
-        ticketDAO.insert(ticket);
+        Long record;
+
+        record = ticketDAO.insert(ticket);
+        ticket.setTicketId(record);
 
         model.addAttribute("ticket", ticket);
         return "result";

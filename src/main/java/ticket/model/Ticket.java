@@ -2,19 +2,12 @@ package ticket.model;
 
 public class Ticket {
 
-    private Integer ticketId;
+    private Long ticketId;
     private String name;
     private String number;
     private String email;
 
     public Ticket() { }
-
-    public Ticket(int ticketId, String name, String number, String email) {
-        this.ticketId = ticketId;
-        this.name = name;
-        this.number = number;
-        this.email = email;
-    }
 
     public String getName() {
         return name;
@@ -40,11 +33,11 @@ public class Ticket {
         this.email = email;
     }
 
-    public Integer getTicketId() {
+    public Long getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(Integer ticketId) {
+    public void setTicketId(Long ticketId) {
         this.ticketId = ticketId;
     }
 }

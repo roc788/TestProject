@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Thank You!</h1>
-    <p>You will be contacted at the recommended time for you to head to Montebello</p>
+    <p>Your ticket number is <span th:text="${ticket.ticketId}" />. You will be contacted at the recommended time for you to head to Montebello.</p>
     <p th:text="'Name: ' + ${ticket.name}" />
     <p th:text="'Number: ' + ${ticket.number}" />
     <p th:text="'Email: ' + ${ticket.email}" />
