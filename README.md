@@ -16,12 +16,12 @@ Ticket deletion form URL  : http://localhost:8090/admin/ticket/delete
 You must have mySQL running. You must specify your database name, username, and password.  This is done within
 src/main/resources/application.properties. The table should be created as follows:
 
-`CREATE TABLE TICKET(
- TICKET_ID INT NOT NULL AUTO_INCREMENT,
- NAME VARCHAR(20) NOT NULL,
- NUMBER VARCHAR(12) NOT NULL,
- EMAIL VARCHAR(30) NOT NULL,
- PRIMARY KEY (TICKET_ID)
+`CREATE TABLE TICKET(<br />
+ TICKET_ID INT NOT NULL AUTO_INCREMENT,<br />
+ NAME VARCHAR(20) NOT NULL,<br />
+ NUMBER VARCHAR(12) NOT NULL,<br />
+ EMAIL VARCHAR(30) NOT NULL,<br />
+ PRIMARY KEY (TICKET_ID)<br />
 );`
 
 # Email Setup
