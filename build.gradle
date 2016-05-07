@@ -24,14 +24,17 @@ repositories {
 
 dependencies {
     compile 'org.springframework:spring-jdbc'
+    compile 'org.springframework:spring-context-support'
     compile 'mysql:mysql-connector-java'
     compile 'org.springframework:spring-tx'
     compile 'org.springframework:spring-context'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-jdbc'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework.boot:spring-boot-starter-mail'
     compile 'org.springframework:spring-web'
     compile 'com.fasterxml.jackson.core:jackson-databind'
+    compile 'com.sun.mail:javax.mail'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 

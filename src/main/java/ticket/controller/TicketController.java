@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ticket.dao.TicketDAO;
 import ticket.model.Ticket;
+import ticket.notifier.NotificationManager;
+import ticket.notifier.impl.SimpleNotificationManager;
+
 import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
@@ -13,6 +16,9 @@ public class TicketController {
 
     @Autowired
     TicketDAO ticketDAO;
+
+    @Autowired
+    NotificationManager notificationManager;
 
     @RequestMapping(value = "/ticket", method = RequestMethod.GET)
     public String ticketForm(Model model) {
@@ -33,6 +39,7 @@ public class TicketController {
 
         record = ticketDAO.insert(ticket);
         ticket.setTicketId(record);
+        notificationManager.sendEmail(ticket);
 
         model.addAttribute("ticket", ticket);
         return "result";

@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-    <!-- NONE OF THIS STUFF WAS NEEDED WHEN USING SPRINGBOOTAPPLICATION ANNOTATION AND application.properties -->
+    <!-- NONE OF THIS STUFF WAS NEEDED WHEN USING SPRINGBOOTAPPLICATION ANNOTATION AND application.properties file -->
 
     <!--<context:annotation-config />
     <context:component-scan base-package="ticket" />-->
@@ -19,6 +19,7 @@
         <property name="username" value="root"/>
         <property name="password" value=""/>
     </bean>-->
+
 
     <!--<bean id="jdbcTicketDAO" class="ticket.dao.impl.JdbcTicketDAO">
         <property name="dataSource" ref="dataSource" />
