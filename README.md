@@ -7,8 +7,8 @@ ticket deletion and ticket querying.
 
 #URLs
 
-Ticket generation form URL: http://localhost:8090/ticket
-Ticket query URL          : http://localhost:8090/admin/ticket/{ticket number}
+Ticket generation form URL: http://localhost:8090/ticket<br />
+Ticket query URL          : http://localhost:8090/admin/ticket/{ticket number}<br />
 Ticket deletion form URL  : http://localhost:8090/admin/ticket/delete
 
 # SQL
@@ -16,13 +16,13 @@ Ticket deletion form URL  : http://localhost:8090/admin/ticket/delete
 You must have mySQL running. You must specify your database name, username, and password.  This is done within
 src/main/resources/application.properties. The table should be created as follows:
 
-CREATE TABLE TICKET(
+`CREATE TABLE TICKET(
  TICKET_ID INT NOT NULL AUTO_INCREMENT,
  NAME VARCHAR(20) NOT NULL,
  NUMBER VARCHAR(12) NOT NULL,
  EMAIL VARCHAR(30) NOT NULL,
  PRIMARY KEY (TICKET_ID)
-);
+);`
 
 # Email Setup
 
